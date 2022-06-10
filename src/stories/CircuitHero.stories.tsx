@@ -5,7 +5,7 @@ import { CircuitHero } from '../Components/CircuitHero';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Example/Button',
+  title: 'Components/CircuitHero',
   component: CircuitHero,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
@@ -20,6 +20,8 @@ const Template: ComponentStory<typeof CircuitHero> = (args) => <CircuitHero {...
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
+  width: 600,
+  height: 400,
   pipColour: '#FF9F1C',
   trailColour: '#67E0A3',
   speed: 0.05,

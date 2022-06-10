@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 
 export interface  ICircuitHeroProps {
+    width: number;
+    height: number;
     pipColour: string;
     trailColour: string;
+    backgroundColour: string;
     creationTimer: number;
     speed: number;
     pipHalflife: number;
@@ -31,6 +34,10 @@ interface IPath {
     locations: ILocation[];
 }
 
+interface IAgedPip extends IPip {
+    timestamp: number;
+}
+
 const sinPrecalc = [...Array(8).keys()].map((input) => Math.sin(input * Math.PI/4))
 
 const cosPrecalc = [...Array(8).keys()].map((input) => Math.cos(input * Math.PI/4))
@@ -42,6 +49,8 @@ export function CircuitHero(props: ICircuitHeroProps) {
     let canvasCtx: CanvasRenderingContext2D;
 
     const pips: IPip[] = [];
+
+    const agedPips: IAgedPip[] = [];
 
     let mouse_x: number, mouse_y: number;
 
@@ -79,10 +88,14 @@ export function CircuitHero(props: ICircuitHeroProps) {
         return Math.abs((currentDirection) - 1) as IPip['direction']
     }
 
-    function prunePips(elapsedTime: number) {
+    function prunePips(elapsedTime: number, timestamp: number) {
         for(let i = 0; i < pips.length; i++) {
             if (probabilityFromHalflifeAndElapsed(props.pipHalflife, elapsedTime)) {
-                pips.splice(i,1);
+                const outPip = pips.splice(i,1)[0];
+                agedPips.push({
+                    ...outPip,
+                    timestamp: timestamp,
+                });
             }
         }
     }
@@ -175,13 +188,26 @@ export function CircuitHero(props: ICircuitHeroProps) {
         }
     }
 
+    function agePips(timestamp: number) {
+        for(let i = agedPips.length - 1; 0 <= i; i--) {
+            const remainingLife = props.trailLife - (timestamp - agedPips[i].timestamp)
+            if (remainingLife < 0) {
+                agedPips.splice(i,1);
+                continue;
+            } else {
+                evaluatePathDistance((remainingLife) * props.speed, agedPips[i]);
+            }
+        }
+    }
+
     function animate(timestamp?: number) {
 
         const canvasElement = canvasRef.current as HTMLCanvasElement
         const rect = canvasElement.getBoundingClientRect();
         const elapsedTime = timestamp - previous;
         if(timestamp) {
-            prunePips(elapsedTime)
+            prunePips(elapsedTime, timestamp)
+            agePips(timestamp)
             turnPips(elapsedTime)
             movePips(elapsedTime)
         }
@@ -202,7 +228,7 @@ export function CircuitHero(props: ICircuitHeroProps) {
             if(elapsedTime) bifurcate(elapsedTime);
         }
 
-        if (generatePips && pips.length < props.maxPips) {
+        if (generatePips && (pips.length + agedPips.length) < props.maxPips) {
             pips.push(randomPip(mouse_x, mouse_y))
         }
 
@@ -227,6 +253,23 @@ export function CircuitHero(props: ICircuitHeroProps) {
             canvasCtx.moveTo(pips[i].path.locations[0].x, pips[i].path.locations[0].y)
             for(let j = 1; j < pips[i].path.locations.length; j++) {
                 canvasCtx.lineTo(pips[i].path.locations[j].x, pips[i].path.locations[j].y)
+            }
+            canvasCtx.stroke();
+        }
+
+        for(let i = 0; i < agedPips.length; i++) {
+            canvasCtx.beginPath();
+            canvasCtx.strokeStyle = props.pipColour;
+            canvasCtx.shadowColor = props.pipColour;
+            canvasCtx.shadowBlur = 4
+            canvasCtx.rect(agedPips[i].location.x, agedPips[i].location.y, 1, 1);
+            canvasCtx.stroke();
+            canvasCtx.beginPath();
+            canvasCtx.strokeStyle = props.trailColour;
+            canvasCtx.shadowBlur = 0
+            canvasCtx.moveTo(agedPips[i].path.locations[0].x, agedPips[i].path.locations[0].y)
+            for(let j = 1; j < agedPips[i].path.locations.length; j++) {
+                canvasCtx.lineTo(agedPips[i].path.locations[j].x, agedPips[i].path.locations[j].y)
             }
             canvasCtx.stroke();
         }
@@ -256,5 +299,5 @@ export function CircuitHero(props: ICircuitHeroProps) {
         animate();
     })
 
-    return <canvas ref={canvasRef}></canvas>
+    return <canvas ref={canvasRef} width={props.width} height={props.height}></canvas>
 }

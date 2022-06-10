@@ -5,8 +5,6 @@ export interface  ICircuitHeroProps {
     height: number;
     pipColour: string;
     trailColour: string;
-    backgroundColour: string;
-    creationTimer: number;
     speed: number;
     pipHalflife: number;
     turnHalflife: number;
@@ -217,7 +215,13 @@ export function CircuitHero(props: ICircuitHeroProps) {
             if(pips[i].location.x > canvasElement.width
                 || pips[i].location.x < 0
                 || pips[i].location.y > canvasElement.height
-                || pips[i].location.y < 0) pips.splice(i,1);
+                || pips[i].location.y < 0) {
+                    const outPip = pips.splice(i,1)[0];
+                    agedPips.push({
+                        ...outPip,
+                        timestamp: timestamp,
+                    });
+                }
         }
 
 

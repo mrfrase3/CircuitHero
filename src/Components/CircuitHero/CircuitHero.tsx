@@ -37,7 +37,7 @@ const cosPrecalc = [...Array(8).keys()].map((input) => Math.cos(input * Math.PI/
 
 export function CircuitHero(props: ICircuitHeroProps) {
 
-    const canvasRef = React.createRef();
+    const canvasRef = React.createRef<HTMLCanvasElement>();
 
     let canvasCtx: CanvasRenderingContext2D;
 
@@ -146,9 +146,14 @@ export function CircuitHero(props: ICircuitHeroProps) {
             }
             pathLength += thisPathLength;
             if (pathLength > distance){
-                terminatingIndex = i
+                terminatingIndex = i - 1;
                 const terminatingDistance = pathLength - distance;
                 const scale = terminatingDistance / thisPathLength;
+                finalLocation = {
+                    x: pip.path.locations[terminatingIndex].x + scale * x,
+                    y: pip.path.locations[terminatingIndex].y + scale * y
+                }
+                break;
             }
             //console.log(`pathLength: ${pathLength}`)
         }

@@ -130,8 +130,8 @@ export function CircuitHero(props: ICircuitHeroProps) {
 
     function evaluatePathDistance(distance: number, pip: IPip) {
         let pathLength = 0;
-        let terminatingIndex: number;
-        let finalLocation: ILocation;
+        let terminatingIndex = 0;
+        let finalLocation: ILocation | undefined;
         for(let i = pip.path.locations.length -1; i > 0; i--) {
             let x = pip.path.locations[i].x - pip.path.locations[i-1].x
             let y = pip.path.locations[i].y - pip.path.locations[i-1].y
@@ -247,7 +247,7 @@ export function CircuitHero(props: ICircuitHeroProps) {
         })
 
         canvasCtx = canvasElement.getContext("2d");
-        
+
         animate();
     })
 

@@ -36,9 +36,11 @@ interface IAgedPip extends IPip {
     timestamp: number;
 }
 
-const sinPrecalc = [...Array(8).keys()].map((input) => Math.sin(input * Math.PI/4))
+const directions = Array.from(Array(8).keys())
 
-const cosPrecalc = [...Array(8).keys()].map((input) => Math.cos(input * Math.PI/4))
+const sinPrecalc = directions.map((input) => Math.sin(input * Math.PI/4))
+
+const cosPrecalc = directions.map((input) => Math.cos(input * Math.PI/4))
 
 export function CircuitHero(props: ICircuitHeroProps) {
 
@@ -52,7 +54,7 @@ export function CircuitHero(props: ICircuitHeroProps) {
 
     let mouse_x: number, mouse_y: number;
 
-    let generatePips: boolean = false;
+    let generatePips = false;
 
     let previous: number;
 
@@ -144,8 +146,8 @@ export function CircuitHero(props: ICircuitHeroProps) {
         let terminatingIndex = 0;
         let finalLocation: ILocation | undefined;
         for(let i = pip.path.locations.length -1; i > 0; i--) {
-            let x = pip.path.locations[i].x - pip.path.locations[i-1].x
-            let y = pip.path.locations[i].y - pip.path.locations[i-1].y
+            const x = pip.path.locations[i].x - pip.path.locations[i-1].x
+            const y = pip.path.locations[i].y - pip.path.locations[i-1].y
             let thisPathLength: number;
             if (x == 0) {
                 thisPathLength = Math.abs(y)

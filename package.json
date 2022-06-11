@@ -11,20 +11,29 @@
     "@storybook/react": "^6.5.7",
     "@storybook/testing-library": "^0.0.11",
     "@types/react": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
     "babel-loader": "^8.2.5",
+    "eslint": "^8.17.0",
     "react-dom": "^18.1.0",
     "typescript": "^4.7.3"
   },
-  "name": "CircuitHero",
+  "name": "circuit_hero",
   "version": "1.0.0",
   "description": "A component for rendering circuit like traces from the mouse location on a canvas.",
-  "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "types": "dist/types/index.js",
   "license": "MIT",
   "dependencies": {
     "react": "^18.1.0"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "build:esnext": "tsc --project tsconfig.mjs.json",
+    "build:commonjs": "tsc --project tsconfig.cjs.json"
   }
 }

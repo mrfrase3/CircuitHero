@@ -5,8 +5,6 @@
         "preserveConstEnums": true,
         "sourceMap": true,
         "moduleResolution": "node",
-        "declaration": true,
-        "declarationDir": "dist/types",
         "jsx": "react",
         "allowSyntheticDefaultImports": true
     },

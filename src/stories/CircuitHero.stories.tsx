@@ -34,3 +34,38 @@ Primary.args = {
   randomMaxDensity: 10,
   maxPips: 200
 };
+
+export const MouseMove = Template.bind({});
+
+MouseMove.args = {
+  width: 600,
+  height: 400,
+  pipColour: '#FF9F1C',
+  trailColour: '#67E0A3',
+  speed: 0.05,
+  pipHalflife: 1000,
+  turnHalflife: 500,
+  trailLife: 2000,
+  bifurcateHalflife: 3000,
+  pipTickGenerationChance: 0.5,
+  generateRandomPips: false,
+  randomMaxDensity: 10,
+  maxPips: 200
+};
+
+export const MouseMoveHighSpec = Template.bind({});
+MouseMoveHighSpec.args = {
+  width: 600,
+  height: 400,
+  pipColour: '#FF9F1C',
+  trailColour: '#67E0A3',
+  speed: 0.05,
+  pipHalflife: 1000,
+  turnHalflife: 500,
+  trailLife: 2000,
+  bifurcateHalflife: 3000,
+  pipTickGenerationChance: 0.5,
+  generateRandomPips: false,
+  randomMaxDensity: 10,
+  maxPips: 500
+};

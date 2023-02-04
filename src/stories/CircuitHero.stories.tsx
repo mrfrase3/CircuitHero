@@ -30,7 +30,7 @@ Primary.args = {
   trailLife: 2000,
   bifurcateHalflife: 3000,
   pipTickGenerationChance: 0.5,
-  generateRandomPips: false,
+  generateRandomPips: true,
   randomMaxDensity: 10,
   maxPips: 200
 };

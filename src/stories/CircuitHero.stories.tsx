@@ -82,7 +82,7 @@ BifurcationAmplification.args = {
   trailLife: 2000,
   bifurcateHalflife: 700,
   mousePipsPerSecond: 10,
-  randomPipsPerSecond: 10,
-  generateRandomPips: false,
+  randomPipsPerSecond: 1,
+  generateRandomPips: true,
   maxPips: 300
 };

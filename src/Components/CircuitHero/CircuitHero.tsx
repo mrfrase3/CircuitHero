@@ -249,7 +249,7 @@ export function CircuitHero(props: ICircuitHeroProps) {
             canvasCtx.beginPath();
             canvasCtx.strokeStyle = props.pipColour;
             canvasCtx.shadowColor = props.pipColour;
-            canvasCtx.shadowBlur = 4
+            canvasCtx.shadowBlur = 0
             canvasCtx.rect(pips[i].location.x, pips[i].location.y, 1, 1);
             canvasCtx.stroke();
             canvasCtx.beginPath();

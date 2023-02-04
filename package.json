@@ -1,20 +1,21 @@
 {
   "devDependencies": {
     "@babel/core": "^7.18.2",
-    "@storybook/addon-actions": "^6.5.7",
-    "@storybook/addon-essentials": "^6.5.7",
-    "@storybook/addon-interactions": "^6.5.7",
-    "@storybook/addon-links": "^6.5.7",
-    "@storybook/builder-webpack4": "^6.5.7",
-    "@storybook/cli": "^6.5.6",
-    "@storybook/manager-webpack4": "^6.5.7",
-    "@storybook/react": "^6.5.7",
-    "@storybook/testing-library": "^0.0.11",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-webpack4": "^6.5.16",
+    "@storybook/cli": "^6.5.16",
+    "@storybook/manager-webpack4": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
     "@types/react": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "babel-loader": "^8.2.5",
     "eslint": "^8.17.0",
+    "eslint-plugin-storybook": "0.6.10",
     "npm-run-all": "^4.1.5",
     "react-dom": "^18.1.0",
     "typescript": "^4.7.3"
@@ -27,7 +28,7 @@
   "types": "dist/types/index.js",
   "license": "MIT",
   "dependencies": {
-    "react": "^18.1.0"
+    "react": "18.2.0"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",

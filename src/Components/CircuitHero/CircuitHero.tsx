@@ -16,7 +16,7 @@ export interface  ICircuitHeroProps {
     maxPips: number;
 }
 
-interface ILocation { 
+interface ILocation {
     x: number;
     y: number;
 }

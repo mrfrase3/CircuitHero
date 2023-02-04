@@ -23,7 +23,7 @@ For each pip generated there a number of actions it can take on any tick, it can
 
 The likelihood of any of these functions occurring in a given tick is given by the halflife formulae:
 
-$\% remaining = (\frac{1}{2})^{t/λ}$
+$$ \% remaining = (\frac{1}{2})^{t/λ} $$
 
 or to convert this to a binary value of if the event occurred in that tick we can check if `Math.random()` returns a value greater than this number using the following javascript:
 

@@ -21,7 +21,7 @@ Whilst it was fun to do, the maths is pretty simple at its core.
 
 For each pip generated there a number of actions it can take on any tick, it can continue moving in the same direction, it can bifurcate into two pips, it can change direction, or it can die.
 
-The likelihood of any of these functions occurring in a given tick is given by the halflife formulae:
+The likelihood of any of these functions not decaying in a given tick is given by the halflife formulae:
 
 $$ P(t) = (\frac{1}{2})^{t/λ} $$
 

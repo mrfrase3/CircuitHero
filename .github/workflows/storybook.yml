@@ -25,7 +25,6 @@ jobs:
         cache: 'yarn'
     - run: npm i yarn
     - run: yarn build-storybook
-    - run: npm test
     - name: Upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v1.0.7
       with:

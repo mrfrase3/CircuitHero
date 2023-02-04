@@ -11,7 +11,6 @@ export interface  ICircuitHeroProps {
     trailLife: number;
     bifurcateHalflife: number;
     pipTickGenerationChance: number;
-    creationBehaviour: 'move' | 'constant';
     generateRandomPips: boolean;
     randomMaxDensity: number;
     maxPips: number;
@@ -230,7 +229,7 @@ export function CircuitHero(props: ICircuitHeroProps) {
         previous = timestamp;
 
 
-        if (pips.length < props.maxPips) {
+        if (pips.length + agedPips.length < props.maxPips) {
             if(elapsedTime) bifurcate(elapsedTime);
         }
 
@@ -288,8 +287,8 @@ export function CircuitHero(props: ICircuitHeroProps) {
 
         canvasElement.addEventListener('mousemove', event => {
             const rect = canvasElement.getBoundingClientRect();
-            mouse_x = event.clientX - rect.left
-            mouse_y = event.clientY - rect.top
+            mouse_x = Math.floor(event.clientX - rect.left)
+            mouse_y =  Math.floor(event.clientY - rect.top)
         })
 
         canvasElement.addEventListener('mouseenter', () => {

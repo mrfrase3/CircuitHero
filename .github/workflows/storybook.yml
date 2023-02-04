@@ -26,7 +26,7 @@ jobs:
       uses: actions/upload-pages-artifact@v1.0.7
       with:
         # Artifact name
-        name: circuithero
+        name: circuithero-storybook
         # Path of the directory containing the static assets.
         path: storybook-static/
         # Duration after which artifact will expire in days.
@@ -51,4 +51,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
+        artifact_name: circuithero-storybook
         uses: actions/deploy-pages@v1

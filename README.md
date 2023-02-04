@@ -8,3 +8,5 @@ https://aiden-ziegelaar.github.io/CircuitHero
 To get started quick:
 ```yarn```
 ```yarn storybook```
+
+Let me know if you want an npm package of this and I can deploy something.

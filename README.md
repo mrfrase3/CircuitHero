@@ -13,7 +13,7 @@ To get started quick:
 
 # The Maths
 
-Whilst it was fun to do the maths is pretty simple at its core, nothing above highschool level.
+Whilst it was fun to do, the maths is pretty simple at its core.
 
 ## Halflives
 

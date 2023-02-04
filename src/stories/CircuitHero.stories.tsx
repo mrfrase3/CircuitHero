@@ -59,13 +59,30 @@ MouseMoveHighSpec.args = {
   height: 400,
   pipColour: '#FF9F1C',
   trailColour: '#67E0A3',
-  speed: 0.05,
+  speed: 0.1,
   pipHalflife: 1000,
   turnHalflife: 500,
   trailLife: 2000,
   bifurcateHalflife: 3000,
-  mousePipsPerSecond: 50,
-  randomPipsPerSecond: 50,
+  mousePipsPerSecond: 80,
+  randomPipsPerSecond: 80,
   generateRandomPips: false,
   maxPips: 500
+};
+
+export const BifurcationAmplification = Template.bind({});
+BifurcationAmplification.args = {
+  width: 600,
+  height: 400,
+  pipColour: '#FF9F1C',
+  trailColour: '#67E0A3',
+  speed: 0.05,
+  pipHalflife: 1000,
+  turnHalflife: 500,
+  trailLife: 2000,
+  bifurcateHalflife: 700,
+  mousePipsPerSecond: 10,
+  randomPipsPerSecond: 10,
+  generateRandomPips: false,
+  maxPips: 300
 };

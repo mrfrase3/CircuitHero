@@ -24,6 +24,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
     - run: npm i yarn
+    - run: yarn
     - run: yarn build-storybook
     - name: Upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v1.0.7

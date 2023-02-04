@@ -10,9 +10,9 @@ export interface  ICircuitHeroProps {
     turnHalflife: number;
     trailLife: number;
     bifurcateHalflife: number;
-    pipTickGenerationChance: number;
+    mousePipsPerSecond: number;
     generateRandomPips: boolean;
-    randomMaxDensity: number;
+    randomPipsPerSecond: number;
     maxPips: number;
 }
 
@@ -199,6 +199,10 @@ export function CircuitHero(props: ICircuitHeroProps) {
         }
     }
 
+    function normalisePipGenerationCount(pips: number ) {
+        return Math.floor(pips) + (Math.random() < (pips % 1) ? 1 : 0)
+    }
+
     function animate(timestamp?: number) {
 
         const canvasElement = canvasRef.current as HTMLCanvasElement
@@ -233,13 +237,32 @@ export function CircuitHero(props: ICircuitHeroProps) {
             if(elapsedTime) bifurcate(elapsedTime);
         }
 
+        const mousePips = props.mousePipsPerSecond * elapsedTime / 1000
+
+        const randomPips = props.randomPipsPerSecond * elapsedTime / 1000
+
+        let normalisedMousePips = normalisePipGenerationCount(mousePips);
+        let normalisedrandomPips = normalisePipGenerationCount(randomPips);
+
+        const totalNewPips = normalisedMousePips + normalisedrandomPips;
+        const totalPips = (pips.length + agedPips.length) + totalNewPips;
+
+        if (totalPips > props.maxPips) {
+            const pipDiff = totalPips - props.maxPips;
+            if (pipDiff > 0) {
+                normalisedMousePips = Math.floor(normalisedMousePips - (pipDiff * normalisedMousePips / totalNewPips));
+                normalisedrandomPips = Math.floor(normalisedrandomPips - ( pipDiff * normalisedrandomPips/ totalNewPips));
+            }
+        }
+
         if (generatePips && (pips.length + agedPips.length) < props.maxPips) {
-            pips.push(randomPip(mouse_x, mouse_y))
+            for(let i = 0; i < normalisedMousePips; i++) {
+                pips.push(randomPip(mouse_x, mouse_y))
+            }
         }
 
         if (props.generateRandomPips && pips.length < props.maxPips) {
-            const newPips = Math.floor(Math.random() * props.randomMaxDensity)
-            for(let i = 0; i < newPips; i++)
+            for(let i = 0; i < normalisedrandomPips; i++)
                 pips.push(randomPip(Math.floor(Math.random() * rect.width), Math.floor(Math.random() * rect.height)));
         }
 

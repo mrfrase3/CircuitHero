@@ -29,9 +29,9 @@ Primary.args = {
   turnHalflife: 500,
   trailLife: 2000,
   bifurcateHalflife: 3000,
-  pipTickGenerationChance: 0.5,
+  mousePipsPerSecond: 50,
+  randomPipsPerSecond: 50,
   generateRandomPips: true,
-  randomMaxDensity: 10,
   maxPips: 200
 };
 
@@ -47,9 +47,9 @@ MouseMove.args = {
   turnHalflife: 500,
   trailLife: 2000,
   bifurcateHalflife: 3000,
-  pipTickGenerationChance: 0.5,
+  mousePipsPerSecond: 50,
+  randomPipsPerSecond: 50,
   generateRandomPips: false,
-  randomMaxDensity: 10,
   maxPips: 200
 };
 
@@ -64,8 +64,8 @@ MouseMoveHighSpec.args = {
   turnHalflife: 500,
   trailLife: 2000,
   bifurcateHalflife: 3000,
-  pipTickGenerationChance: 0.5,
+  mousePipsPerSecond: 50,
+  randomPipsPerSecond: 50,
   generateRandomPips: false,
-  randomMaxDensity: 10,
   maxPips: 500
 };

@@ -43,7 +43,7 @@ const cosPrecalc = directions.map((input) => Math.cos(input * Math.PI/4))
 
 export function CircuitHero(props: ICircuitHeroProps) {
 
-    const canvasRef = React.createRef<HTMLCanvasElement>();
+    const canvasRef = React.useRef<HTMLCanvasElement>();
 
     let canvasCtx: CanvasRenderingContext2D;
 

@@ -21,8 +21,8 @@
     "react-dom": "^18.1.0",
     "typescript": "^4.7.3"
   },
-  "name": "circuit-hero",
-  "version": "1.0.0",
+  "name": "@mrfrase3/circuit-hero",
+  "version": "1.0.1",
   "description": "A class for rendering circuit like traces from the mouse location on a canvas.",
   "main": "dist/cjs/index.js",
   "module": "dist/mjs/index.js",

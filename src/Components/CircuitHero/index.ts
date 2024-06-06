@@ -1,1 +1,0 @@
-export { CircuitHero } from "./CircuitHero";

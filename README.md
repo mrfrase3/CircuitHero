@@ -7,7 +7,24 @@ Also 0 optimisation has gone into this so far.
 A deployed version of the storybook is available here:
 https://aiden-ziegelaar.github.io/CircuitHero
 
-To get started quick:
+# Usage
+
+## To use:
+
+```yarn add circuit-hero```
+
+```ts
+import { CircuitHero, type CircuitHeroProps } from 'circuit-hero';
+
+const canvas = document.getElementById('canvas');
+const props = { /* ...custom options */ } as CircuitHeroProps;
+const circuitHero = new CircuitHero(canvas, props);
+
+// to cleanup
+circuitHero.stop();
+```
+
+## To develop:
 
 ```yarn```
 

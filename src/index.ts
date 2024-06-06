@@ -1,1 +1,1 @@
-export { CircuitHero } from "./Components/CircuitHero";
+export { CircuitHero, type CircuitHeroProps } from "./CircuitHero";

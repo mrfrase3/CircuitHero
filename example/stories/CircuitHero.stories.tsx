@@ -64,10 +64,10 @@ MouseMoveHighSpec.args = {
   turnHalflife: 500,
   trailLife: 2000,
   bifurcateHalflife: 3000,
-  mousePipsPerSecond: 80,
+  mousePipsPerSecond: 200,
   randomPipsPerSecond: 80,
   generateRandomPips: false,
-  maxPips: 500
+  maxPips: 10000
 };
 
 export const BifurcationAmplification = Template.bind({});
